@@ -72,9 +72,9 @@ def rsa_encrypt(m, publicKey):
     return power(m, publicKey[0], publicKey[1])
 
 # Decrypt message using private key (d, n)
-def rsa_decrypt(c, privateKey):
-    plaintext = power(c, privateKey[0], privateKey[1])
-    plaintext = hex(plaintext)
+def rsa_decrypt(c, privatekey):
+    plaintext = power(c, privatekey[0], privatekey[1])
+    plaintext = hex(plaintext)[2:] #[2:] is there to remove the 0x used for formatting as hex
     return bytes.fromhex(plaintext).decode("utf-8")
 
 if __name__ == '__main__':
