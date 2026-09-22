@@ -74,8 +74,8 @@ def rsa_encrypt(m, publicKey):
 # Decrypt message using private key (d, n)
 def rsa_decrypt(c, privateKey):
     plaintext = power(c, privateKey[0], privateKey[1])
-    plaintext = hex(plaintext)[2:]
-    return
+    plaintext = hex(plaintext)
+    return bytes.fromhex(plaintext).decode("utf-8")
 
 if __name__ == '__main__':
     p = 0xF7E75FDC469067FFDC4E847C51F452DF
