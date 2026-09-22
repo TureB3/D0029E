@@ -69,7 +69,7 @@ def power(base, expo, m):
 
 # Encrypt message using public key (e, n), and return it as a hex value
 def rsa_encrypt(m, publicKey):
-    return power(m, publicKey[0], publicKey[1])
+    return power(m, publicKey[0], publicKey[1]) # Intentionally keeping them as numbers to be able to more easily decrypt
 
 # Decrypt message using private key (d, n)
 def rsa_decrypt(c, privatekey):
