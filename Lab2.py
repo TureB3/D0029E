@@ -2,7 +2,7 @@
 # Here we are calculating phi(n) using Hit and Trial Method
 # but we can optimize it using Extended Euclidean Algorithm
 from math import trunc
-
+import hashlib
 
 def modInverse(n, m):
     x = [0]
