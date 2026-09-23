@@ -10,10 +10,7 @@ def sign_md5_hash(m, private_key):
 def verify_md5_hash(m, s, public_key): # Task 2.4
     message = int.from_bytes(m.encode(), 'big')
     toverify = power(s, public_key[0], public_key[1])
-    if message == toverify:
-        return True
-    else:
-        return False
+    return message == toverify
 def modInverse(n, m):
     x = [0]
     y = [0]
