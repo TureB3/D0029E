@@ -4,7 +4,7 @@
 from math import trunc
 import hashlib
 def sign_md5_hash(m, private_key):
-    message = bytes.fromhex(m)
+    message = int.from_bytes(m.encode(), 'big')
     sign = power(message, private_key[0], private_key[1])
     return sign
 def modInverse(n, m):
