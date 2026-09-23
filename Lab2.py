@@ -7,6 +7,13 @@ def sign_md5_hash(m, private_key):
     message = int.from_bytes(m.encode(), 'big')
     sign = power(message, private_key[0], private_key[1])
     return sign
+def verify_md5_hash(m, s, public_key): # Task 2.4
+    message = int.from_bytes(m.encode(), 'big')
+    toverify = power(s, public_key[0], public_key[1])
+    if message == toverify:
+        return True
+    else:
+        return False
 def modInverse(n, m):
     x = [0]
     y = [0]
@@ -87,4 +94,4 @@ if __name__ == '__main__':
 
     publicKey, privateKey = generate_rsa_key(p,q,e)
     print(f"The public key is: ({hex(publicKey[0])},{hex(publicKey[1])})")
-    print(f"The private key is: {hex(privateKey)}")
+    print(f"The private key is: {hex(privateKey[0])}")
