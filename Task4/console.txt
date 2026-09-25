@@ -1,0 +1,45 @@
+[09/25/26]seed@VM:~/.../Lab 2$ gcc -o a0 goodbye.c
+[09/25/26]seed@VM:~/.../Lab 2$ a0
+Hello world
+[09/25/26]seed@VM:~/.../Lab 2$ bless a0
+Gtk-Message: 10:58:48.238: Failed to load module "canberra-gtk-module"
+Could not find a part of the path '/home/seed/.config/bless/plugins'.
+Could not find a part of the path '/home/seed/.config/bless/plugins'.
+Could not find a part of the path '/home/seed/.config/bless/plugins'.
+Could not find file "/home/seed/.config/bless/export_patterns"
+[09/25/26]seed@VM:~/.../Lab 2$ head -c 12352 a0 > prefix
+[09/25/26]seed@VM:~/.../Lab 2$ tail -c +12480 a0 > suffix
+[09/25/26]seed@VM:~/.../Lab 2$ md5collgen -p prefix -o out1.bin out2.bin
+MD5 collision generator v1.5
+by Marc Stevens (http://www.win.tue.nl/hashclash/)
+
+Using output filenames: 'out1.bin' and 'out2.bin'
+Using prefixfile: 'prefix'
+Using initial value: fbaa8fda6b58d297c2d38bd594703057
+
+Generating first block: ........
+Generating second block: W......................
+Running time: 3.02817 s
+[09/25/26]seed@VM:~/.../Lab 2$ tail -c 128 out1.bin > P
+[09/25/26]seed@VM:~/.../Lab 2$ tail -c 128 out2.bin > Q
+[09/25/26]seed@VM:~/.../Lab 2$ bless suffix
+Gtk-Message: 11:01:17.439: Failed to load module "canberra-gtk-module"
+Could not find a part of the path '/home/seed/.config/bless/plugins'.
+Could not find a part of the path '/home/seed/.config/bless/plugins'.
+Could not find a part of the path '/home/seed/.config/bless/plugins'.
+Could not find file "/home/seed/.config/bless/export_patterns"
+^C
+[09/25/26]seed@VM:~/.../Lab 2$ head -c 288 suffix > suffix_1
+[09/25/26]seed@VM:~/.../Lab 2$ tail -c +416 suffix > suffix_2
+[09/25/26]seed@VM:~/.../Lab 2$ cat prefix P suffix_1 P suffix_2 > a1.out
+[09/25/26]seed@VM:~/.../Lab 2$ cat prefix Q suffix_1 P suffix_2 > a2.out
+[09/25/26]seed@VM:~/.../Lab 2$ chmod a+x a1.out a2.out
+[09/25/26]seed@VM:~/.../Lab 2$ a1.out
+Hello world
+[09/25/26]seed@VM:~/.../Lab 2$ a2.out
+Goodbye world
+[09/25/26]seed@VM:~/.../Lab 2$ md5sum a1.out
+445d24f672544dbabaf8741d4c0e0288  a1.out
+[09/25/26]seed@VM:~/.../Lab 2$ md5sum a2.out
+445d24f672544dbabaf8741d4c0e0288  a2.out
+[09/25/26]seed@VM:~/.../Lab 2$
