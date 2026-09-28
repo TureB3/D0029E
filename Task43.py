@@ -1,8 +1,4 @@
 from Lab2 import *
-def sign_md5_hash2(m, private_key):
-    message = int.from_bytes(m, 'big')
-    sign = power(message, private_key[0], private_key[1])
-    return sign
 
 if __name__ == '__main__':
     d = 0x74D806F9F3A62BAE331FFE3F0A68AFE35B3D2E4794148AACBC26AA381CD7D30D
@@ -16,8 +12,11 @@ if __name__ == '__main__':
         N = f.read()
     hash1 = hashlib.md5(M).hexdigest()
     hash2 = hashlib.md5(N).hexdigest()
-    sign1 = sign_md5_hash2(hash1, privateKey)
-    sign2 = sign_md5_hash2(hash2, privateKey)
+    sign1 = sign_md5_hash(hash1, privateKey)
+    sign2 = sign_md5_hash(hash2, privateKey)
 
     print(f"Signature of benign program: {hex(sign1)}")
     print(f"Signature of evil program: {hex(sign2)}")
+
+    if verify_md5_hash(hash1,sign1, publicKey) & verify_md5_hash(hash1,sign2, publicKey):
+        print(f'The signatures are equal and correct')

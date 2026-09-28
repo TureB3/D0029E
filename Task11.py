@@ -6,4 +6,4 @@ if __name__ == '__main__':
 
     publicKey, privateKey = generate_rsa_key(p,q,e)
     print(f"The public key is: ({hex(publicKey[0])},{hex(publicKey[1])})")
-    print(f"The private key is: {hex(privateKey)}")
+    print(f"The private key is: {hex(privateKey[0])}")
