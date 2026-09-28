@@ -7,6 +7,7 @@ def sign_md5_hash(m, private_key):
     message = int.from_bytes(m.encode(), 'big')
     sign = power(message, private_key[0], private_key[1])
     return sign
+
 def verify_md5_hash(m, s, public_key): # Task 2.4
     message = int.from_bytes(m.encode(), 'big')
     toverify = power(s, public_key[0], public_key[1])
@@ -80,9 +81,12 @@ def rsa_encrypt(m, publicKey):
 
 # Decrypt message using private key (d, n)
 def rsa_decrypt(c, privatekey):
-    plaintext = power(c, privatekey[0], privatekey[1])
-    plaintext = hex(plaintext)[2:] #[2:] is there to remove the 0x used for formatting as hex
-    return bytes.fromhex(plaintext).decode("utf-8")
+    try:
+        plaintext = power(c, privatekey[0], privatekey[1])
+        plaintext = hex(plaintext)[2:] #[2:] is there to remove the 0x used for formatting as hex
+        return bytes.fromhex(plaintext).decode("utf-8")
+    except:
+        return "Unable to decrypt message, incorrect format"
 
 if __name__ == '__main__':
     p = 0xF7E75FDC469067FFDC4E847C51F452DF

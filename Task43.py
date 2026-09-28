@@ -1,6 +1,4 @@
 from Lab2 import *
-def printer(message):
-    print(message)
 
 
 if __name__ == '__main__':
@@ -11,7 +9,7 @@ if __name__ == '__main__':
     malicious_program = b'print("Goodbye, World!")'
     privateKey = (d, n)
     publicKey = (e, n)
-    with open('Task4/out1.bin', 'rb') as f:
+    with open('Task4/a1.out', 'rb') as f:
         M = f.read()
-    with open('Task4/out2.bin', 'rb') as f:
+    with open('Task4/a2.out', 'rb') as f:
         N = f.read()
